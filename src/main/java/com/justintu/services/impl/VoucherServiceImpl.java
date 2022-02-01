@@ -44,11 +44,14 @@ public class VoucherServiceImpl implements VoucherService {
     @Autowired
     ConditionRepository conditionRepository;
 
+    @Autowired
+    VoucherMapper voucherMapper;
+
     @Override
     public String generateVoucher(VoucherDTO dto) {
 //        Optional<Promotion> promotion = promotionRepository.findById(promotionId);
 //        if (promotion.isPresent()) {
-            Voucher voucher = VoucherMapper.toDbEntity(dto);
+            Voucher voucher = voucherMapper.toDbEntity(dto);
             voucher.setCode(VoucherCodeGenerator.createRandomCode(CODE_LENGTH));
             voucher.setStatus(VoucherStatus.NEW);
             voucher.setCreatedTime(LocalDateTime.now());

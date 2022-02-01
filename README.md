@@ -54,13 +54,18 @@ mvn -version
 
 ## Installing & Starting
 
-###### Packaging and running 
+###### Packaging  
 ```$xslt
-mvn clean test
-java -jar target/voucher-management-api.jar
+mvn clean package
+
 ```
 
 ###### How to start application
+> Start in local after packaging
+```
+java -jar target/voucher-management-api.jar
+```
+
 > Start by docker
 ```
 docker build -t justin-tu:latest .
@@ -74,4 +79,18 @@ mvn spring-boot:run
 
 ## Test your local:
 Visit link: http://localhost:8888/api/voucher/getAllVouchers
+
 View API documentation: http://localhost:8888/swagger-ui.html#/
+
+## Limitation:
+Due to limited time, the below aren't included in this version:
+> Business
+```
+- No implementation for promotion, cart amount calculation
+```
+> Technical:
+```
+- Ignoring authorization
+- Liquibase setup
+- Cucumber testing 
+```
